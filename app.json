@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "JackTrack",
+    "slug": "jacktrack",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": ["ios", "android", "web"],
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {"image": "./assets/images/splash.png", "resizeMode": "contain", "backgroundColor": "#ffffff"},
+    "updates": {"fallbackToCacheTimeout": 0},
+    "assetBundlePatterns": ["**/*"],
+    "ios": {"supportsTablet": true},
+    "android": {"adaptiveIcon": {"foregroundImage": "./assets/images/icon.png", "backgroundColor": "#FFFFFF"}},
+    "web": {"favicon": "./assets/images/favicon.png"}
+  }
+}

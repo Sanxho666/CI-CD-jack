@@ -1,0 +1,36 @@
+name: Build and Deploy JackTrack
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Expo Login
+        run: npx expo login -u ${{ secrets.EXPO_USERNAME }} -p ${{ secrets.EXPO_PASSWORD }}
+
+      - name: EAS Build (Android)
+        run: npx eas build --platform android --non-interactive --profile production
+        env:
+          EAS_ACCESS_TOKEN: ${{ secrets.EAS_TOKEN }}
+
+      - name: EAS Build (iOS)
+        run: npx eas build --platform ios --non-interactive --profile production
+        env:
+          EAS_ACCESS_TOKEN: ${{ secrets.EAS_TOKEN }}
